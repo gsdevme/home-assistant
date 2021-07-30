@@ -1,0 +1,56 @@
+- alias: 'Turn on hall & landing light when there is movement 10am-9pm'
+  id: 'turn_on_hall_and_landing_when_movement-10-21'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.hall_or_landing_motion
+    to: 'on'
+  condition:
+    - condition: time
+      after: '10:00:00'
+      before: '21:00:00'
+    - condition: state
+      entity_id: light.hall_lights
+      state: 'off'
+  action:
+    service: light.turn_on
+    target:
+      entity_id: light.hall_lights
+    data:
+      brightness: 254
+      transition: 1
+
+- alias: 'Turn on hall light when there is movement after 9pm but before 10am'
+  id: 'turn_on_hall_and_landing_when_movement-21-10'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.hall_or_landing_motion
+    to: 'on'
+  condition:
+    - condition: time
+      after: '21:00:00'
+      before: '10:00:00'
+    - condition: state
+      entity_id: light.hall_light
+      state: 'off'
+  action:
+    service: light.turn_on
+    target:
+      # i.e. the downstairs one only (not the landing since they are near bedrooms)
+      entity_id: light.hall_light
+    data:
+      brightness: 20
+
+- alias: 'Turn off hall/landing light 3 minutes after last movement'
+  id: 'turn_off_hall_and_landing_after_3_minutes_of_no_movement'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.hall_or_landing_motion
+    to: 'off'
+    for:
+      minutes: 3
+  action:
+    service: light.turn_off
+    target:
+      entity_id: light.hall_lights
+    data:
+      transition: 10

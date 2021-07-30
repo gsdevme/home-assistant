@@ -1,0 +1,23 @@
+#- alias: 'Alert when entity is unavailable'
+#  id: 'alert_when_unavailable'
+#  trigger:
+#    # Just check twice per day... lunch time / evening best chance of resolving
+#    - platform: time
+#      at: '21:00:00'
+#    - platform: time
+#      at: '13:00:00'
+#  condition:
+#    condition: template
+#    value_template: >
+#      {% for item in states %}
+#        {% if item.state == 'unavailable' %} true
+#        {% else %} false {% endif %}
+#      {% endfor %}
+#  action:
+#    service: notify.notify
+#    data_template: >
+#      {% for item in states %}
+#        {% if item.state == 'unavailable' %}
+#          {{ item.attributes.friendly_name }} is unavailable
+#        {% endif %}
+#      {% endfor %}

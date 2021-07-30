@@ -1,0 +1,19 @@
+- alias: "Notify of plant problem"
+  id: "notify_of_plant_problem"
+  trigger:
+    - platform: state
+      entity_id: group.plants
+      to: problem
+  action:
+    - service: notify.notify
+      data_template:
+        message: >
+          {%- set problems = expand('group.plants') | selectattr('state','eq','problem') | list %}
+          {%- if problems | count > 1 %}
+            there is {{ problems | count }} problem:
+          {%- else %}
+            there is 1 problem:
+          {%- endif %}
+          {%- for problem in problems %}
+            {{ problem.name }} - {{ problem.attributes.problem }}
+          {%- endfor %}

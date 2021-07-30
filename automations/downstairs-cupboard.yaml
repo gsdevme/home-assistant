@@ -1,0 +1,26 @@
+- alias: 'Turn on light for downstairs cupboard when door opened'
+  id: 'turn_on_light_for_downstairs_cupboard_when_door_opened'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.downstairs_cupboard_door_contact
+    to: 'on'
+  action:
+    service: light.turn_on
+    target:
+      entity_id: light.downstairs_cupboard_light
+    data:
+      brightness: 254
+      transition: 0
+
+- alias: 'Turn off light for downstairs cupboard when door closed'
+  id: 'turn_off_light_for_downstairs_cupboard_when_door_closed'
+  trigger:
+    platform: state
+    entity_id: binary_sensor.downstairs_cupboard_door_contact
+    to: 'off'
+  action:
+    service: light.turn_off
+    target:
+      entity_id: light.downstairs_cupboard_light
+    data:
+      transition: 0

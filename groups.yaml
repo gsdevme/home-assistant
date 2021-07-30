@@ -1,0 +1,4 @@
+plants:
+  name: plants
+  entities:
+    - plant.kitchen_plant

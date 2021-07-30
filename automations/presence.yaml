@@ -1,0 +1,10 @@
+- alias: 'Turn everything off when nobody is home'
+  id: when_nobody_is_home_turn_off_everything
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.people_home
+      to: 'off'
+  action:
+    - service: light.turn_off
+      target:
+        entity_id: light.all_lights
