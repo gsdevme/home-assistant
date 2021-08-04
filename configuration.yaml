@@ -117,6 +117,8 @@ utility_meter:
     source: sensor.electric_meter_energy
     cycle: daily
 
+energy:
+
 logger:
   default: warn
   logs:
