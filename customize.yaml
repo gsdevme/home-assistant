@@ -39,6 +39,8 @@ plant.kitchen_plant:
 
 sensor.daily_energy:
   friendly_name: Todays Energy
+sensor.daily_solar:
+  friendly_name: Todays Sun
 
 sensor.electric_meter_power:
   friendly_name: Current Usage

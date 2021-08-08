@@ -26,6 +26,7 @@ views:
               - sensor.outside_front_sensor_temperature
               - sensor.electric_meter_power
               - sensor.daily_energy
+              - sensor.daily_solar
           - type: grid
             columns: 3
             cards:
