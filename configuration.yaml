@@ -205,7 +205,8 @@ template:
     - name: "Current Solar kWh"
       unit_of_measurement: kWh
       device_class: "power"
-      state: {{ states('sensor.current_solar_watts')|float / 1000 }}
+      state: >
+        {{ states('sensor.current_solar_watts')|float / 1000 }}
   binary_sensor:
     - name: people_home
       state: >-
