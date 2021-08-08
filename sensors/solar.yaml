@@ -3,6 +3,12 @@
   unit_of_measurement: "W"
   unique_id: "current_solar_watts"
   name: "Current Solar Watts"
+- platform: template
+    sensors:
+      current_solar_in_kwh:
+        friendly_name: "Current Solar kWh"
+        unit_of_measurement: kWh
+        value_template: "{{ states('sensor.current_solar_watts')|float / 1000 }}"
 - platform: mqtt
   state_topic: "solar/110E0017B230004/kwhtoday"
   unit_of_measurement: "kWh"
