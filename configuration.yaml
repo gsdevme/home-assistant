@@ -202,47 +202,39 @@ switch: !include_dir_merge_list switches/
 
 template:
   sensors:
-    current_solar_in_kwh:
-      friendly_name: "Current Solar kWh"
+    - name: "Current Solar kWh"
       unit_of_measurement: kWh
       device_class: "power"
-      value_template: "{{ states('sensor.current_solar_watts')|float / 1000 }}"
+      state: {{ states('sensor.current_solar_watts')|float / 1000 }}
   binary_sensor:
-    people_home:
-      name: people_home
+    - name: people_home
       state: >-
         {{ is_state('person.gavin', 'home')
            or is_state('person.ceilidh', 'home')
            or is_state('binary_sensor.mqtt_guest_mode', 'on') }}
-    phone_is_charging:
-      name: phone_is_charging
+    - name: phone_is_charging
       state: >-
         {{ is_state('sensor.iphone_x_battery_state', 'Charging') }}
-    all_lights_off:
-      name: all_lights_off
+    - name: all_lights_off
       state: >
         {{ is_state('light.all_lights', 'off') }}
-    is_gavin_asleep:
-      name: is_gavin_asleep
+    - name: is_gavin_asleep
       state: >-
         {{ now().hour < 11
           and is_state('binary_sensor.all_lights_off', 'on')
           and is_state('person.gavin', 'home')
           and is_state('sensor.phone_is_charging', 'on') }}
-    motion_inside:
-      name: motion_inside
+    - name: motion_inside
       state: >-
         {{ is_state('binary_sensor.hall_or_landing_motion', 'on')
           or is_state('binary_sensor.kitchen_motion', 'on')
           or is_state('binary_sensor.hall_sensor_occupancy', 'on') }}
-    hall_or_landing_motion:
-      name: hall_or_landing_motion
+    - name: hall_or_landing_motion
       state: >-
         {{ is_state('binary_sensor.landing_sensor_bookcase_occupancy', 'on')
           or is_state('binary_sensor.landing_sensor_occupancy', 'on')
           or is_state('binary_sensor.hall_sensor_occupancy', 'on') }}
-    kitchen_motion:
-      name: kitchen_motion
+    - name: kitchen_motion
       state: >-
         {{ is_state('binary_sensor.kitchen_front_sensor_occupancy', 'on')
           or is_state('binary_sensor.kitchen_rear_sensor_occupancy', 'on') }}
