@@ -32,7 +32,7 @@ views:
               - type: vertical-stack
                 cards:
                   - type: sensor
-                    entity: sensor.living_room_temperature
+                    entity: sensor.living_room_sensor_temperature
                     graph: line
                     hours_to_show: 6
                   - type: sensor

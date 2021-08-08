@@ -4,7 +4,7 @@ sensor.mqtt_xiaomi_a4_c1_38_79_01_ce_ensuite_temperature:
 sensor.mqtt_xiaomi_toilet_temperature:
   friendly_name: Toilet
   icon: mdi:thermometer
-sensor.living_room_temperature:
+sensor.living_room_sensor_temperature:
   friendly_name: Living Room
   icon: mdi:thermometer
 sensor.hall_temperature:

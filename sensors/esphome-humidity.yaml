@@ -1,11 +1,4 @@
 - platform: mqtt
-  unique_id: "mqtt_xiaomi_atc_15e359_living_room_humidity"
-  name: "mqtt_xiaomi_atc_15e359_living_room_humidity"
-  state_topic: "esphome/tempcontroller/sensor/living_room_humidity/state"
-  unit_of_measurement: '%'
-  device_class: 'humidity'
-
-- platform: mqtt
   unique_id: "mqtt_xiaomi_loft_room_humidity"
   name: "mqtt_xiaomi_loft_room_humidity"
   state_topic: "esphome/tempcontroller/sensor/loft_humidity/state"
