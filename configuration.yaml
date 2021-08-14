@@ -116,6 +116,9 @@ utility_meter:
   daily_energy:
     source: sensor.electric_meter_energy
     cycle: daily
+  daily_tv_stand:
+    source: sensor.tv_stand_power
+    cycle: daily
   daily_solar:
     source: sensor.current_solar_in_kwh
     cycle: daily
