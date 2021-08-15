@@ -116,12 +116,6 @@ utility_meter:
   daily_energy:
     source: sensor.electric_meter_energy
     cycle: daily
-  daily_tv_stand:
-    source: sensor.tv_stand_power
-    cycle: daily
-  daily_solar:
-    source: sensor.current_solar_in_kwh
-    cycle: daily
 
 energy:
 
@@ -204,12 +198,6 @@ binary_sensor: !include_dir_merge_list binary-sensors/
 switch: !include_dir_merge_list switches/
 
 template:
-  - sensor:
-      - name: "Current Solar kWh"
-        unit_of_measurement: kWh
-        device_class: "power"
-        state: >
-          {{ states('sensor.current_solar_watts')|float / 1000 }}
   - binary_sensor:
       - name: people_home
         state: >
