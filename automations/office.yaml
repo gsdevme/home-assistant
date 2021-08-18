@@ -6,7 +6,7 @@
   condition:
     - condition: time
       after: '07:00:00'
-      before: '21:00:00'
+      before: '20:00:00'
     - condition: state
       entity_id: light.office_light
       state: 'off'
@@ -27,7 +27,7 @@
     to: 'on'
   condition:
     - condition: time
-      after: '21:01:00'
+      after: '20:01:00'
       before: '6:59:00'
     - condition: state
       entity_id: light.office_light
@@ -40,7 +40,7 @@
       target:
         entity_id: light.office_light
       data:
-        brightness: 50
+        brightness: 20
 
 - alias: '[Office] Start/Restart timer if occupancy OR light is switched on'
   trigger:
