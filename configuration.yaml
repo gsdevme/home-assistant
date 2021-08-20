@@ -299,12 +299,6 @@ light:
       - light.living_room_playbar
       - light.living_room_light_strip
   - platform: group
-    name: kitchen_lights
-    entities:
-      - light.kitchen_front_light
-      - light.kitchen_rear_light
-      - light.kitchen_light_strip
-  - platform: group
     name: downstairs_lights
     entities:
       - light.hall_light
