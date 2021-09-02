@@ -2,7 +2,7 @@
 default: all;
 
 tag=latest
-version=2021.8.6
+version=2021.9.0
 
 build:
 	docker build . --file Dockerfile --build-arg HOME_ASSISTANT_VERSION=$(version) --tag gsdevme/home-assistant:$(tag)
