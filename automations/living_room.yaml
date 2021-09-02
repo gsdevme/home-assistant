@@ -1,4 +1,5 @@
-- alias: 'Turn on living room light when pressed on'
+- id: 'living_room_lights_switch_on'
+  alias: 'Turn on living room light when pressed on'
   trigger:
     platform: state
     entity_id: sensor.living_room_switch_action
@@ -9,9 +10,9 @@
       entity_id: light.the_living_room_lights
     data:
       brightness: 180
-      xy_color: [0.472, 0.413]
 
-- alias: 'Turn off living room light when pressed off'
+- id: 'living_room_lights_switch_off'
+  alias: 'Turn off living room light when pressed off'
   trigger:
     platform: state
     entity_id: sensor.living_room_switch_action
