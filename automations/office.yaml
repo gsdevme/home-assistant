@@ -18,9 +18,15 @@
     entity_id: switch.office_light_switch_right
     to: 'off'
   action:
-    service: timer.finish
-    target:
-      entity_id: timer.office
+      - service: timer.finish
+        target:
+          entity_id: timer.office
+      - service: light.turn_off
+        target:
+          entity_id: light.office_light
+      - service: switch.turn_off
+        target:
+          entity_id: switch.office_monitors
 
 - alias: '[Office] Turn on the light/monitor when there is movement (and the light is off)'
   trigger:
