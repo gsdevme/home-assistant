@@ -1,3 +1,14 @@
+- alias: '[Office] Turn on the physical switch if its off'
+  id: 'turn_on_office_physical_switch_when_light_on'
+  trigger:
+    platform: state
+    entity_id: light.office_light
+    to: 'on'
+  action:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.office_light_switch_left
+
 - alias: '[Office] Turn on the light/monitor when there is movement (and the light is off)'
   trigger:
     platform: state
