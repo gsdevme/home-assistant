@@ -11,17 +11,6 @@
     target:
       entity_id: switch.office_light_switch_left
 
-- alias: 'turn_on_office_light'
-  id: 'turn_on_office_light'
-  trigger:
-    platform: state
-    entity_id: switch.office_light_switch_right
-    to: 'on'
-  action:
-    service: light.turn_on
-    target:
-      entity_id: light.office_light
-
 - alias: 'turn_off_office_light'
   id: 'turn_off_office_light'
   trigger:
@@ -29,9 +18,9 @@
     entity_id: switch.office_light_switch_right
     to: 'off'
   action:
-    service: light.turn_off
+    service: timer.finish
     target:
-      entity_id: light.office_light
+      entity_id: timer.office
 
 - alias: '[Office] Turn on the light/monitor when there is movement (and the light is off)'
   trigger:
@@ -46,6 +35,9 @@
       entity_id: light.office_light
       state: 'off'
   action:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.office_light_switch_right
     - service: switch.turn_on
       target:
         entity_id: switch.office_monitors
@@ -68,6 +60,9 @@
       entity_id: light.office_light
       state: 'off'
   action:
+    - service: switch.turn_on
+      target:
+        entity_id: switch.office_light_switch_right
     - service: switch.turn_on
       target:
         entity_id: switch.office_monitors
