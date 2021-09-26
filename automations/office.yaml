@@ -2,14 +2,36 @@
   id: 'turn_the_physical_light_switch_back_on_after_10mins'
   trigger:
     platform: state
-    entity_id: switch.office_monitors
+    entity_id: switch.office_light_switch_left
     to: 'off'
     for:
       minutes: 10
   action:
     service: switch.turn_on
     target:
-      entity_id: switch.office_monitors
+      entity_id: switch.office_light_switch_left
+
+- alias: 'turn_on_office_light'
+  id: 'turn_on_office_light'
+  trigger:
+    platform: state
+    entity_id: switch.office_light_switch_right
+    to: 'on'
+  action:
+    service: light.turn_on
+    target:
+      entity_id: light.office_light
+
+- alias: 'turn_off_office_light'
+  id: 'turn_off_office_light'
+  trigger:
+    platform: state
+    entity_id: switch.office_light_switch_right
+    to: 'off'
+  action:
+    service: light.turn_off
+    target:
+      entity_id: light.office_light
 
 - alias: '[Office] Turn on the light/monitor when there is movement (and the light is off)'
   trigger:
