@@ -1,13 +1,15 @@
-- alias: '[Office] Turn on the physical switch if its off'
-  id: 'turn_on_office_physical_switch_when_light_on'
+- alias: 'Turn the physical light switch back on after 10mins'
+  id: 'turn_the_physical_light_switch_back_on_after_10mins'
   trigger:
     platform: state
-    entity_id: light.office_light
-    to: 'on'
+    entity_id: switch.office_monitors
+    to: 'off'
+    for:
+      minutes: 10
   action:
-    - service: switch.turn_on
-      target:
-        entity_id: switch.office_light_switch_left
+    service: switch.turn_on
+    target:
+      entity_id: switch.office_monitors
 
 - alias: '[Office] Turn on the light/monitor when there is movement (and the light is off)'
   trigger:
@@ -53,15 +55,11 @@
       data:
         brightness: 20
 
-- alias: '[Office] Start/Restart timer if occupancy OR light is switched on'
+- alias: '[Office] Start/Restart timer if occupancy'
   trigger:
     - platform: state
       entity_id: binary_sensor.office_sensor_occupancy
       to: 'on'
-    - platform: state
-      entity_id: light.office_light
-      to: 'on'
-      from: 'off'
   action:
     service: timer.start
     target:
