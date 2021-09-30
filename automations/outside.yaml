@@ -1,15 +1,12 @@
-- alias: '[Outside] Turn on light when there is movement and no light'
+- alias: '[Outside] Turn on light when there is movement'
+  id: 'outside_light_on_after_five'
   trigger:
     platform: state
     entity_id: binary_sensor.outside_sensor_occupancy
     to: 'on'
   condition:
-    - condition: state
-      entity_id: light.outside_light
-      state: 'off'
-    - condition: numeric_state
-      entity_id: sensor.outside_sensor_illuminance_lux
-      below: 80
+    - condition: time
+      after: '17:01:00'
   action:
     service: light.turn_on
     target:
