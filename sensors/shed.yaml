@@ -13,6 +13,13 @@
   device_class: 'temperature'
 
 - platform: mqtt
+  unique_id: "shed_pi_temp"
+  name: "Shed Pi Temp"
+  state_topic: "shed/pi_temp"
+  unit_of_measurement: '°C'
+  device_class: 'temperature'
+
+- platform: mqtt
   unique_id: "shed_battery_voltage"
   name: "Shed Battery Voltage"
   state_topic: "shed/battery_voltage"
