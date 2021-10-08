@@ -1,0 +1,20 @@
+- platform: mqtt
+  unique_id: "shed_battery_temp"
+  name: "Shed Battery Temp"
+  state_topic: "shed/battery_temp"
+  unit_of_measurement: '°C'
+  device_class: 'temperature'
+
+- platform: mqtt
+  unique_id: "shed_controller_temp"
+  name: "Shed Controller Temp"
+  state_topic: "shed/controller_temp"
+  unit_of_measurement: '°C'
+  device_class: 'temperature'
+
+- platform: mqtt
+  unique_id: "shed_battery_voltage"
+  name: "Shed Battery Voltage"
+  state_topic: "shed/battery_voltage"
+  device_class: 'voltage'
+
