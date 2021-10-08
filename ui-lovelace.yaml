@@ -222,6 +222,25 @@ views:
         filter:
           include:
             - domain: switch
+  - path: shed
+    title: Shed
+    cards:
+      - type: history-graph
+        title: 'Temperature'
+        entities:
+          - sensor.shed_battery_temp
+          - sensor.shed_controller_temp
+          - sensor.shed_pi_temp
+      - type: gauge
+        name: 'Battery'
+        entity: sensor.shed_battery_voltage
+        unit: 'v'
+        max: 14.5
+        min: 10
+      - type: sensor
+        entity: sensor.shed_battery_voltage
+        hours_to_show: 24
+        graph: line
   - path: lights
     title: Lights
     cards:
