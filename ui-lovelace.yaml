@@ -252,7 +252,7 @@ views:
         min: 0
       - type: gauge
         name: 'Charge Watts'
-        entity: sensor.shed_charge_power
+        entity: sensor.shed_charge_watts
         unit: 'W'
         max: 100
         min: 0

@@ -38,7 +38,7 @@
   device_class: 'current'
 
 - platform: mqtt
-  unique_id: "shed_charge_power"
+  unique_id: "shed_charge_watts"
   name: "Shed Charge Watts"
   state_topic: "shed/charge_power"
   unit_of_measurement: 'W'
