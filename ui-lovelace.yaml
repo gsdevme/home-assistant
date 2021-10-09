@@ -227,6 +227,7 @@ views:
     cards:
       - type: history-graph
         title: 'Temperature'
+        hours_to_show: 12
         entities:
           - sensor.shed_battery_temp
           - sensor.shed_controller_temp
@@ -237,6 +238,24 @@ views:
         unit: 'v'
         max: 14.5
         min: 10
+      - type: gauge
+        name: 'Charge'
+        entity: sensor.shed_charge_voltage
+        unit: 'v'
+        max: 23
+        min: 12
+      - type: gauge
+        name: 'Charge'
+        entity: sensor.shed_charge_current
+        unit: 'v'
+        max: 6
+        min: 0
+      - type: gauge
+        name: 'Charge Watts'
+        entity: sensor.shed_charge_power
+        unit: 'W'
+        max: 100
+        min: 0
       - type: sensor
         entity: sensor.shed_battery_voltage
         hours_to_show: 24
