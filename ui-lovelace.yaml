@@ -247,7 +247,7 @@ views:
       - type: gauge
         name: 'Charge'
         entity: sensor.shed_charge_current
-        unit: 'v'
+        unit: 'a'
         max: 6
         min: 0
       - type: gauge
