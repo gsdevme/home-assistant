@@ -256,6 +256,11 @@ views:
         unit: 'W'
         max: 100
         min: 0
+      - type: history-graph
+        title: 'Charge'
+        hours_to_show: 2
+        entities:
+          - sensor.shed_charge_watts
       - type: sensor
         entity: sensor.shed_battery_voltage
         hours_to_show: 24
