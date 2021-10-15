@@ -132,7 +132,7 @@ mqtt:
   discovery: true
 
 recorder:
-  purge_keep_days: 14
+  purge_keep_days: 3
   include:
     domains:
       - sensor
