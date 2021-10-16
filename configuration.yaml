@@ -138,7 +138,6 @@ recorder:
       - sensor
       - switch
       - alarm_control_panel
-      - automation
       - person
       - vacuum
       - binary_sensor
