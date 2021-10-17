@@ -92,6 +92,36 @@
       data_template:
         brightness: '{{states.light.office_light.attributes.brightness + 15}}'
 
+- id: "office_cube_rotate_left_decrease_light"
+  trigger:
+    platform: state
+    entity_id: sensor.cube_action
+    to: 'rotate_left'
+  condition:
+    - condition: state
+      entity_id: light.office_light
+      state: 'on'
+  action:
+    - service: light.turn_on
+      target:
+        entity_id: light.office_light
+      data_template:
+        brightness: '{{states.light.office_light.attributes.brightness - 15}}'
+
+- id: "office_cube_tap_all_other_lights_off"
+  trigger:
+    platform: state
+    entity_id: sensor.cube_action
+    to: 'tap'
+  condition:
+    - condition: state
+      entity_id: light.office_light
+      state: 'on'
+  action:
+    - service: light.turn_off
+      target:
+        entity_id: light.downstairs_lights
+
 - alias: '[Office] Start/Restart timer if occupancy'
   trigger:
     - platform: state
