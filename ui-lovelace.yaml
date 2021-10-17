@@ -85,7 +85,7 @@ views:
               exclude:
                 - state: unknown
                 - state: '< 65'
-          - break
+          - type: custom:layout-break
           - type: glance
             entities:
               - entity: binary_sensor.mqtt_backdoor
@@ -122,7 +122,7 @@ views:
           - type: picture-entity
             entity: camera.garden_left
             camera_view: live
-          - break
+          - type: custom:layout-break
           - type: plant-status
             entity: plant.kitchen_plant
           - type: 'custom:vacuum-card'
