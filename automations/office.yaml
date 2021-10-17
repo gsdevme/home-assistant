@@ -76,7 +76,8 @@
       data:
         brightness: 20
 
-- id: "office_cube_rotate_right_increase_light"
+- alias: "[Office] On cube rotate right increase light"
+  id: "office_cube_rotate_right_increase_light"
   trigger:
     platform: state
     entity_id: sensor.cube_action
@@ -90,9 +91,10 @@
       target:
         entity_id: light.office_light
       data_template:
-        brightness: '{{states.light.office_light.attributes.brightness + 15}}'
+        brightness: '{{states.light.office_light.attributes.brightness + 25}}'
 
-- id: "office_cube_rotate_left_decrease_light"
+- alias: "[Office] On cube rotate left decrease light"
+  id: "office_cube_rotate_left_decrease_light"
   trigger:
     platform: state
     entity_id: sensor.cube_action
@@ -106,9 +108,10 @@
       target:
         entity_id: light.office_light
       data_template:
-        brightness: '{{states.light.office_light.attributes.brightness - 15}}'
+        brightness: '{{states.light.office_light.attributes.brightness - 25}}'
 
-- id: "office_cube_tap_all_other_lights_off"
+- alias: "[Office] On cube tap turn off downstairs lights"
+  id: "office_cube_tap_all_other_lights_off"
   trigger:
     platform: state
     entity_id: sensor.cube_action
