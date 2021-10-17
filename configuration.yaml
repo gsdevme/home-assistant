@@ -292,11 +292,10 @@ light:
     name: downstairs_lights
     entities:
       - light.hall_light
-      - light.all_living_room_lights
-      - light.living_room_lights
+      - light.the_living_room_lights
       - light.downstairs_cupboard_light
       - light.outside_light
-      - light.kitchen_lights
+      - light.the_kitchen_lights
   - platform: group
     name: upstairs_lights
     entities:
