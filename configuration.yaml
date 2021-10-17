@@ -116,9 +116,6 @@ utility_meter:
   daily_energy:
     source: sensor.electric_meter_energy
     cycle: daily
-  daily_solar:
-    source: sensor.current_solar_watts
-    cycle: daily
 
 energy:
 
@@ -138,7 +135,6 @@ recorder:
       - sensor
       - switch
       - alarm_control_panel
-      - automation
       - person
       - vacuum
       - binary_sensor
@@ -156,6 +152,7 @@ recorder:
       - '*motion_sensitivity'
       - '*update_available'
       - '*date_time_iso'
+      - '*air_quality_*'
   db_url: !env_var RECORDER_DSN sqlite:////config/home-assistant.sqlite
 
 weather:
@@ -208,10 +205,6 @@ template:
              or is_state('person.ceilidh', 'home')
              or is_state('binary_sensor.mqtt_guest_mode', 'on') }}
   - binary_sensor:
-      - name: phone_is_charging
-        state: >
-          {{ is_state('sensor.iphone_x_battery_state', 'Charging') }}
-  - binary_sensor:
       - name: all_lights_off
         state: >
           {{ is_state('light.all_lights', 'off') }}
@@ -220,8 +213,8 @@ template:
         state: >
           {{ now().hour < 11
             and is_state('binary_sensor.all_lights_off', 'on')
+            and is_state('binary_sensor.motion_inside', 'off')
             and is_state('person.gavin', 'home')
-            and is_state('sensor.phone_is_charging', 'on') }}
   - binary_sensor:
       - name: motion_inside
         state: >
@@ -253,7 +246,7 @@ lovelace:
       type: module
     - url: /local/layout-card.js
       type: module
-    - url: /local/clockwork-card.js
+    - url: /local/mini-graph-card-bundle.js
       type: js
 
 alarm_control_panel:

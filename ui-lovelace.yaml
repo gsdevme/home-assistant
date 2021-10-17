@@ -144,6 +144,82 @@ views:
             filter:
               include:
                 - domain: input_datetime
+  - path: switches
+    title: Switches
+    cards:
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+        filter:
+          include:
+            - domain: switch
+  - path: shed
+    title: Shed
+    cards:
+      - type: history-graph
+        title: 'Temperature'
+        hours_to_show: 12
+        entities:
+          - sensor.shed_battery_temp
+          - sensor.shed_controller_temp
+          - sensor.shed_pi_temp
+          - sensor.outside_shed_temperature
+      - type: gauge
+        name: 'Battery'
+        entity: sensor.shed_battery_voltage
+        unit: 'v'
+        max: 14.5
+        min: 10
+      - type: gauge
+        name: 'Charge'
+        entity: sensor.shed_charge_voltage
+        unit: 'v'
+        max: 23
+        min: 12
+      - type: gauge
+        name: 'Charge'
+        entity: sensor.shed_charge_current
+        unit: 'a'
+        max: 6
+        min: 0
+      - type: gauge
+        name: 'Charge Watts'
+        entity: sensor.shed_charge_watts
+        unit: 'W'
+        max: 100
+        min: 0
+      - type: history-graph
+        title: 'Charge'
+        hours_to_show: 2
+        entities:
+          - sensor.shed_charge_watts
+      - type: sensor
+        entity: sensor.shed_battery_voltage
+        hours_to_show: 24
+        graph: line
+  - path: lights
+    title: Lights
+    cards:
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+        filter:
+          include:
+            - domain: light
+  - path: recorder
+    title: Recorder
+    cards:
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+        filter:
+          include:
+            - entity_id: "states_*"
+            - entity_id: "*_states_*"
+            - entity_id: "*_entity_*"
   - path: debug
     title: Debug
     cards:
@@ -212,78 +288,3 @@ views:
             - domain: sensor
               attributes:
                 device_class: battery
-  - path: switches
-    title: Switches
-    cards:
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-        filter:
-          include:
-            - domain: switch
-  - path: shed
-    title: Shed
-    cards:
-      - type: history-graph
-        title: 'Temperature'
-        hours_to_show: 12
-        entities:
-          - sensor.shed_battery_temp
-          - sensor.shed_controller_temp
-          - sensor.shed_pi_temp
-      - type: gauge
-        name: 'Battery'
-        entity: sensor.shed_battery_voltage
-        unit: 'v'
-        max: 14.5
-        min: 10
-      - type: gauge
-        name: 'Charge'
-        entity: sensor.shed_charge_voltage
-        unit: 'v'
-        max: 23
-        min: 12
-      - type: gauge
-        name: 'Charge'
-        entity: sensor.shed_charge_current
-        unit: 'a'
-        max: 6
-        min: 0
-      - type: gauge
-        name: 'Charge Watts'
-        entity: sensor.shed_charge_watts
-        unit: 'W'
-        max: 100
-        min: 0
-      - type: history-graph
-        title: 'Charge'
-        hours_to_show: 2
-        entities:
-          - sensor.shed_charge_watts
-      - type: sensor
-        entity: sensor.shed_battery_voltage
-        hours_to_show: 24
-        graph: line
-  - path: lights
-    title: Lights
-    cards:
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-        filter:
-          include:
-            - domain: light
-  - path: recorder
-    title: Recorder
-    cards:
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-        filter:
-          include:
-            - entity_id: "states_*"
-            - entity_id: "*_states_*"
-            - entity_id: "*_entity_*"
