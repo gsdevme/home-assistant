@@ -1,0 +1,12 @@
+- platform: statistics
+  name: air_quality_co2_stat
+  entity_id: sensor.air_quality_co2
+  sampling_size: 30
+- platform: statistics
+  name: air_quality_formaldehyd_stat
+  entity_id: sensor.air_quality_formaldehyd
+  sampling_size: 30
+- platform: statistics
+  name: air_quality_formaldehyd_voc
+  entity_id: sensor.air_quality_voc
+  sampling_size: 30
