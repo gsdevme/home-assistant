@@ -1,6 +1,7 @@
 homeassistant:
   name: Home
   unit_system: metric
+  time_zone: "Europe/London"
   customize: !include customize.yaml
   latitude: !env_var LATITUDE 0.0
   longitude: !env_var LONGITUDE 0.0
