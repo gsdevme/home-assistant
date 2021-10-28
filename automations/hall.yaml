@@ -8,9 +8,6 @@
     - condition: time
       after: '06:00:00'
       before: '19:00:00'
-    - condition: state
-      entity_id: light.hall_lights
-      state: 'off'
   action:
     service: light.turn_on
     target:
@@ -28,16 +25,13 @@
   condition:
     - condition: time
       after: '19:00:00'
-    - condition: state
-      entity_id: light.hall_light
-      state: 'off'
   action:
     service: light.turn_on
     target:
       # i.e. the downstairs one only (not the landing since they are near bedrooms)
       entity_id: light.hall_light
     data:
-      brightness: 20
+      brightness: 10
 
 - alias: 'Turn off hall/landing light 3 minutes after last movement'
   id: 'turn_off_hall_and_landing_after_3_minutes_of_no_movement'
