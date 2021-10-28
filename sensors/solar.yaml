@@ -16,3 +16,9 @@
   unique_id: "solar_total_kwh"
   device_class: "power"
   name: "Solar Kwh Total"
+- platform: integration
+  source: sensor.current_solar_watts
+  name: solar_kwh
+  unit_prefix: k
+  round: 2
+  method: left
