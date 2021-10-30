@@ -118,6 +118,9 @@ utility_meter:
   daily_energy:
     source: sensor.electric_meter_energy
     cycle: daily
+  solar_daily_energy:
+    source: sensor.solar_kwh
+    cycle: daily
 
 energy:
 
