@@ -1,13 +1,13 @@
-- alias: 'Turn on hall & landing light when there is movement 10am-9pm'
-  id: 'turn_on_hall_and_landing_when_movement-10-21'
+- alias: 'Turn on hall & landing light when there is movement day mode'
+  id: 'turn_on_hall_and_landing_when_movement-day'
   trigger:
     platform: state
     entity_id: binary_sensor.hall_or_landing_motion
     to: 'on'
   condition:
-    - condition: time
-      after: '06:00:00'
-      before: '19:00:00'
+    - condition: numeric_state
+      entity_id: sensor.hall_sensor_illuminance_lux
+      above: '90'
   action:
     service: light.turn_on
     target:
@@ -16,15 +16,16 @@
       brightness: 254
       transition: 1
 
-- alias: 'Turn on hall light when there is movement after 8pm but before 10am'
-  id: 'turn_on_hall_and_landing_when_movement-20-10'
+- alias: 'Turn on hall light when there is movement night mode'
+  id: 'turn_on_hall_and_landing_when_movement-night'
   trigger:
     platform: state
     entity_id: binary_sensor.hall_or_landing_motion
     to: 'on'
   condition:
-    - condition: time
-      after: '19:00:00'
+    - condition: numeric_state
+      entity_id: sensor.hall_sensor_illuminance_lux
+      below: '91'
   action:
     service: light.turn_on
     target:
