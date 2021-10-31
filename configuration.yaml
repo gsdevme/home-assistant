@@ -216,10 +216,10 @@ template:
   - binary_sensor:
       - name: is_gavin_asleep
         state: >
-          {{ now().hour < 11
+          {{ now().hour < 10
             and is_state('binary_sensor.all_lights_off', 'on')
             and is_state('binary_sensor.motion_inside', 'off')
-            and is_state('person.gavin', 'home')
+            and is_state('person.gavin', 'home') }}
   - binary_sensor:
       - name: motion_inside
         state: >
