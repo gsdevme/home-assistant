@@ -165,38 +165,53 @@ views:
           - sensor.shed_controller_temp
           - sensor.shed_pi_temp
           - sensor.outside_shed_temperature
-      - type: gauge
-        name: 'Battery'
-        entity: sensor.shed_battery_voltage
-        unit: 'v'
-        max: 14.5
-        min: 10
-      - type: gauge
-        name: 'Charge'
-        entity: sensor.shed_charge_voltage
-        unit: 'v'
-        max: 23
-        min: 12
-      - type: gauge
-        name: 'Charge'
-        entity: sensor.shed_charge_current
-        unit: 'a'
-        max: 6
-        min: 0
-      - type: gauge
-        name: 'Charge Watts'
-        entity: sensor.shed_charge_watts
-        unit: 'W'
-        max: 100
-        min: 0
+      - type: horizontal-stack
+        cards:
+        - type: gauge
+          name: 'Battery Voltage'
+          entity: sensor.shed_battery_voltage
+          unit: 'v'
+          max: 14.5
+          min: 10
+        - type: gauge
+          name: 'Solar Voltage'
+          entity: sensor.shed_charge_voltage
+          unit: 'v'
+          max: 23
+          min: 12
+      - type: horizontal-stack
+        cards:
+        - type: gauge
+          name: 'Charge'
+          entity: sensor.shed_charge_current
+          unit: 'a'
+          max: 6
+          min: 0
+        - type: gauge
+          name: 'Charge Watts'
+          entity: sensor.shed_charge_watts
+          unit: 'W'
+          max: 100
+          min: 0
+      - type: horizontal-stack
+        cards:
+        - type: gauge
+          name: 'Shed Temperature'
+          entity: sensor.outside_shed_temperature
+        - type: gauge
+          name: 'Battery Temperature'
+          entity: sensor.shed_battery_temp
       - type: history-graph
         title: 'Charge'
-        hours_to_show: 2
+        hours_to_show: 1
         entities:
           - sensor.shed_charge_watts
       - type: sensor
-        entity: sensor.shed_battery_voltage
         hours_to_show: 24
+        entity: sensor.shed_solar_daily_energy
+      - type: sensor
+        entity: sensor.shed_battery_voltage
+        hours_to_show: 6
         graph: line
   - path: lights
     title: Lights

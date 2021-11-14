@@ -121,6 +121,9 @@ utility_meter:
   solar_daily_energy:
     source: sensor.solar_kwh
     cycle: daily
+  shed_solar_daily_energy:
+    source: sensor.sehd_solar_kwh
+    cycle: daily
 
 energy:
 
