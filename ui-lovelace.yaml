@@ -205,7 +205,7 @@ views:
         cards:
         - type: gauge
           name: 'Pi Temperature'
-          entity: sensor.sensor.shed_pi_temp
+          entity: sensor.shed_pi_temp
         - type: gauge
           name: 'Solar Controller Temperature'
           entity: sensor.shed_controller_temp
