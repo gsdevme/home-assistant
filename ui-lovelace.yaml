@@ -201,6 +201,14 @@ views:
         - type: gauge
           name: 'Battery Temperature'
           entity: sensor.shed_battery_temp
+      - type: horizontal-stack
+        cards:
+        - type: gauge
+          name: 'Pi Temperature'
+          entity: sensor.sensor.shed_pi_temp
+        - type: gauge
+          name: 'Solar Controller Temperature'
+          entity: sensor.shed_controller_temp
       - type: history-graph
         title: 'Charge'
         hours_to_show: 1
