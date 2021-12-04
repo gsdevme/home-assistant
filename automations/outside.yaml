@@ -2,7 +2,7 @@
   id: 'outside_light_on_after_five'
   trigger:
     platform: state
-    entity_id: binary_sensor.outside_sensor_occupancy
+    entity_id: binary_sensor.mqtt_backdoor
     to: 'on'
   condition:
     - condition: time
@@ -16,9 +16,6 @@
 
 - alias: '[Outside] Start/Restart timer if occupancy OR light is switched on'
   trigger:
-    - platform: state
-      entity_id: binary_sensor.outside_sensor_occupancy
-      to: 'on'
     - platform: state
       entity_id: light.outside_light
       to: 'on'
