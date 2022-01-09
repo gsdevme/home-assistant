@@ -98,6 +98,7 @@ alexa:
     filter:
       include_entities:
         - light.master_bedroom_light
+        - light.master_bedroom_lamp
         - light.all_lights
         - switch.mqtt_guest_mode_switch
         - vacuum.jeff
@@ -110,6 +111,8 @@ alexa:
         name: "Everything"
       light.master_bedroom_light:
         name: "Master Bedroom Light"
+      light.master_bedroom_lamp:
+        name: "Master Bedroom Lamp"
 
 utility_meter:
   monthly_energy:
