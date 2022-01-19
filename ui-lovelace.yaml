@@ -177,8 +177,8 @@ views:
           name: 'Solar Voltage'
           entity: sensor.shed_charge_voltage
           unit: 'v'
-          max: 23
-          min: 12
+          max: 46
+          min: 24
       - type: horizontal-stack
         cards:
         - type: gauge
@@ -191,7 +191,7 @@ views:
           name: 'Charge Watts'
           entity: sensor.shed_charge_watts
           unit: 'W'
-          max: 100
+          max: 200
           min: 0
       - type: horizontal-stack
         cards:
