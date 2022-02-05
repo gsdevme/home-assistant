@@ -18,6 +18,14 @@
     - sensor.mqtt_xiaomi_atc_58447f_office_temperature
     - sensor.spare_bedroom_sensor_temperature
     - sensor.landing_sensor_temperature
+- platform: min_max
+  type: mean
+  name: 'House Average'
+  entity_ids:
+    - sensor.living_room_sensor_temperature
+    - sensor.spare_bedroom_sensor_temperature
+    - sensor.landing_sensor_temperature
+    - sensor.mqtt_xiaomi_hall_temperature
 - platform: statistics
   name: office_temperature_stat
   entity_id: sensor.mqtt_xiaomi_atc_58447f_office_temperature
