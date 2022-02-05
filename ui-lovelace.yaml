@@ -9,89 +9,107 @@ views:
         min_columns: 1
         max_columns: 3
         cards:
-          - type: entities
-            entities:
-              - type: divider
-              - entity: sensor.upstairs_average
-                icon: mdi:thermometer
-              - sensor.outside_front_sensor_temperature
-              - sensor.electric_meter_power
-              - sensor.daily_energy
-              - sensor.current_solar_watts
+          - type: horizontal-stack
+            cards:
+              - type: gauge
+                name: 'House Usage'
+                entity: sensor.electric_meter_power
+                unit: 'W'
+                max: 6000
+                min: 0
+              - type: gauge
+                name: 'Solar Watts'
+                entity: sensor.current_solar_watts
+                unit: 'W'
+                max: 900
+                min: 0
+          - type: energy-usage-graph
+          - type: energy-solar-graph
+#          - type: entities
+#            entities:
+#              - type: divider
+#              - entity: sensor.upstairs_average
+#                icon: mdi:thermometer
+#              - sensor.outside_front_sensor_temperature
+#              - sensor.electric_meter_power
+#              - sensor.daily_energy
+#              - sensor.current_solar_watts
           - type: grid
-            columns: 3
+            columns: 4
             cards:
               - type: vertical-stack
                 cards:
                   - type: sensor
                     entity: sensor.living_room_sensor_temperature
                     graph: line
-                    hours_to_show: 6
+                    hours_to_show: 3
                   - type: sensor
                     entity: sensor.kitchen_temperature
                     graph: line
-                    hours_to_show: 6
+                    hours_to_show: 3
                   - type: sensor
                     entity: sensor.mqtt_xiaomi_a4_c1_38_a5_fd_de_bathroom_temperature
                     graph: line
-                    hours_to_show: 6
-                  - type: sensor
-                    entity: sensor.rack_sensor_temperature
-                    graph: line
-                    hours_to_show: 6
+                    hours_to_show: 3
               - type: vertical-stack
                 cards:
                   - type: sensor
                     entity: sensor.mqtt_xiaomi_a4_c1_38_79_01_ce_ensuite_temperature
                     graph: line
-                    hours_to_show: 6
+                    hours_to_show: 3
                   - type: sensor
                     entity: sensor.toilet_sensor_temperature
                     graph: line
-                    hours_to_show: 6
+                    hours_to_show: 3
                   - type: sensor
                     entity: sensor.mqtt_xiaomi_atc_58447f_office_temperature
                     graph: line
-                    hours_to_show: 6
-                  - type: sensor
-                    entity: sensor.spare_bedroom_sensor_temperature
-                    graph: line
-                    hours_to_show: 6
+                    hours_to_show: 3
               - type: vertical-stack
                 cards:
                   - type: sensor
                     entity: sensor.hall_temperature
                     graph: line
-                    hours_to_show: 6
+                    hours_to_show: 3
                   - type: sensor
                     entity: sensor.mqtt_xiaomi_loft_temperature
                     graph: line
-                    hours_to_show: 6
+                    hours_to_show: 3
                   - type: sensor
                     entity: sensor.master_bedroom_sensor_temperature
                     graph: line
-                    hours_to_show: 6
+                    hours_to_show: 3
+              - type: vertical-stack
+                cards:
+                  - type: sensor
+                    entity: sensor.rack_sensor_temperature
+                    graph: line
+                    hours_to_show: 3
+                  - type: sensor
+                    entity: sensor.spare_bedroom_sensor_temperature
+                    graph: line
+                    hours_to_show: 3
                   - type: sensor
                     entity: sensor.outside_front_sensor_temperature
                     graph: line
-                    hours_to_show: 6
-          - type: custom:auto-entities
-            show_empty: false
-            card:
-              type: entities
-            filter:
-              include:
-                - entity_id: "*_humidity"
-              exclude:
-                - state: unknown
-                - state: '< 65'
-          - type: custom:layout-break
-          - type: glance
-            entities:
-              - entity: binary_sensor.mqtt_backdoor
-              - entity: binary_sensor.mqtt_frontdoor
-              - entity: binary_sensor.mqtt_office_window
-            state_color: true
+                    hours_to_show: 3
+#          - type: custom:auto-entities
+#            show_empty: false
+#            card:
+#              type: entities
+#            filter:
+#              include:
+#                - entity_id: "*_humidity"
+#              exclude:
+#                - state: unknown
+#                - state: '< 95'
+#          - type: custom:layout-break
+#          - type: glance
+#            entities:
+#              - entity: binary_sensor.mqtt_backdoor
+#              - entity: binary_sensor.mqtt_frontdoor
+#              - entity: binary_sensor.mqtt_office_window
+#            state_color: true
           - type: custom:auto-entities
             show_empty: false
             card:
@@ -102,23 +120,23 @@ views:
                 - domain: person
                 - entity_id: "alarm_control_panel.automated_alarm_panel"
                 - entity_id: "switch.mqtt_guest_mode_switch"
-          - type: custom:auto-entities
-            show_empty: false
-            card:
-              type: entities
-            sort:
-              numeric: true
-            filter:
-              include:
-                - domain: sensor
-                  attributes:
-                    device_class: battery
-              exclude:
-                - state: unknown
-                - state: unavailable
-                - state: Not Charging
-                - state: Full
-                - state: '> 10'
+#          - type: custom:auto-entities
+#            show_empty: false
+#            card:
+#              type: entities
+#            sort:
+#              numeric: true
+#            filter:
+#              include:
+#                - domain: sensor
+#                  attributes:
+#                    device_class: battery
+#              exclude:
+#                - state: unknown
+#                - state: unavailable
+#                - state: Not Charging
+#                - state: Full
+#                - state: '> 10'
           - type: picture-entity
             entity: camera.garden_left
             camera_view: live
