@@ -18,13 +18,21 @@ views:
                 max: 6000
                 min: 0
               - type: gauge
-                name: 'Solar Watts'
+                name: 'House Solar'
                 entity: sensor.current_solar_watts
                 unit: 'W'
                 max: 900
                 min: 0
           - type: energy-usage-graph
           - type: energy-solar-graph
+          - type: statistics-graph
+            days_to_show: 1
+            chart_type: line
+            stat_types: mean
+            period: 5minute
+            entities:
+              - sensor.outside_front_sensor_temperature
+              - sensor.house_average
 #          - type: entities
 #            entities:
 #              - type: divider
