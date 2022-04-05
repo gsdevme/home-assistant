@@ -1,103 +1,25 @@
-- alias: '[Kitchen] Turn on light when pressed on'
-  trigger:
-    platform: state
-    entity_id: sensor.kitchen_switch_action
-    to: 'on-press'
-  condition:
-    - condition: state
-      entity_id: light.the_kitchen_lights
-      state: 'off'
-  action:
-    - service: light.turn_on
-      target:
-        entity_id: light.the_kitchen_lights
-      data:
-        brightness: 254
-        transition: 1
-
-- alias: '[Kitchen] Turn off light when pressed off'
-  trigger:
-    platform: state
-    entity_id: sensor.kitchen_switch_action
-    to: 'off-press'
-  action:
-    - service: light.turn_off
-      target:
-        entity_id: light.the_kitchen_lights
-
-- alias: '[Kitchen] Turn on light when there is movement before 11pm'
+- alias: '[Kitchen] Turn on light when there is movement'
+  id: 'kitchen_turn_on_light_when_there_is_movement'
   trigger:
     platform: state
     entity_id: binary_sensor.kitchen_motion
     to: 'on'
-  condition:
-    - condition: time
-      before: '23:00:00'
   action:
     - service: light.turn_on
       target:
-        entity_id: light.the_kitchen_lights
+        entity_id: light.kitchen_rear_light
       data:
         brightness: 254
-#        color_temp: 200
-        transition: 1
 
-- alias: 'Turn on kitchen light when there is movement after 11pm'
+- alias: '[Kitchen] Turn off light when there is no movement'
+  id: 'kitchen_turn_off_light_when_there_is_no_movement'
   trigger:
     platform: state
     entity_id: binary_sensor.kitchen_motion
-    to: 'on'
-  condition:
-    - condition: time
-      after: '23:00:00'
-  action:
-    - service: light.turn_on
-      target:
-        entity_id: light.the_kitchen_lights
-      data:
-        brightness: 50
-
-- alias: '[Kitchen] Start/Restart timer if occupancy OR light is switched on'
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.kitchen_motion
-      to: 'on'
-    - platform: state
-      entity_id: light.the_kitchen_lights
-      to: 'on'
-      from: 'off'
-  action:
-    service: timer.start
-    target:
-      entity_id: timer.kitchen
-
-- alias: "[Kitchen] If the timer ends but we still have occupancy reset it"
-  trigger:
-    platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.kitchen
-  condition:
-    - condition: state
-      entity_id: binary_sensor.kitchen_motion
-      state: 'on'
-  action:
-    service: timer.start
-    target:
-      entity_id: timer.kitchen
-
-- alias: "[Kitchen] If the timer ends and we have no occupancy turn off the light"
-  trigger:
-    platform: event
-    event_type: timer.finished
-    event_data:
-      entity_id: timer.kitchen
-  condition:
-    - condition: state
-      entity_id: binary_sensor.kitchen_motion
-      state: 'off'
+    to: 'off'
+    for:
+      minutes: 3
   action:
     service: light.turn_off
     target:
-      entity_id:
-        - light.the_kitchen_lights
+      entity_id: light.kitchen_rear_light
