@@ -1,10 +1,10 @@
-- alias: 'notify about the front door'
-  id: notify_when_someone_is_at_the_frontdoor
-  trigger:
-    - platform: state
-      entity_id: binary_sensor.front_door_ding
-      to: 'on'
-  action:
-    - service: notify.notify
-      data:
-        message: "!FRONT DOOR! Someone is at the front door"
+#- alias: 'notify about the front door'
+#  id: notify_when_someone_is_at_the_frontdoor
+#  trigger:
+#    - platform: state
+#      entity_id: binary_sensor.front_door_ding
+#      to: 'on'
+#  action:
+#    - service: notify.notify
+#      data:
+#        message: "!FRONT DOOR! Someone is at the front door"

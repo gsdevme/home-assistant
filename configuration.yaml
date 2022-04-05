@@ -293,15 +293,14 @@ light:
   - platform: group
     name: hall_lights
     entities:
-      - light.hall_light
-      - light.landing_light
+      - light.hall_wall_office_light
   - platform: group
     name: all_living_room_lights
     entities:
-      - light.living_room_lamp
+#      - light.living_room_lamp
       - light.living_room_playbar
-      - light.living_room_light
-      - light.living_room_light_strip
+#      - light.living_room_light
+#      - light.living_room_light_strip
   - platform: group
     name: downstairs_lights
     entities:
@@ -328,8 +327,6 @@ light:
 timer:
   kitchen:
     duration: "00:07:00"
-  outside:
-    duration: "00:05:00"
   office:
     duration: "00:05:00"
 

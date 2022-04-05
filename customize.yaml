@@ -71,12 +71,12 @@ sensor.mqtt_xiaomi_ensuite_humidity:
 sensor.rack_sensor_temperature:
   friendly_name: Rack
 
-binary_sensor.mqtt_backdoor:
-  friendly_name: Backdoor
-binary_sensor.mqtt_frontdoor:
-  friendly_name: Frontdoor
-binary_sensor.mqtt_office_window:
-  friendly_name: Office Window
+#binary_sensor.mqtt_backdoor:
+#  friendly_name: Backdoor
+#binary_sensor.mqtt_frontdoor:
+#  friendly_name: Frontdoor
+#binary_sensor.mqtt_office_window:
+#  friendly_name: Office Window
 
 alarm_control_panel.automated_alarm_panel:
   friendly_name: Security Alarm

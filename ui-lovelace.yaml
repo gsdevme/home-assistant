@@ -31,14 +31,12 @@ views:
             stat_types: mean
             period: 5minute
             entities:
-              - sensor.outside_front_sensor_temperature
               - sensor.house_average
 #          - type: entities
 #            entities:
 #              - type: divider
 #              - entity: sensor.upstairs_average
 #                icon: mdi:thermometer
-#              - sensor.outside_front_sensor_temperature
 #              - sensor.electric_meter_power
 #              - sensor.daily_energy
 #              - sensor.current_solar_watts
@@ -55,34 +53,34 @@ views:
                     entity: sensor.kitchen_temperature
                     graph: line
                     hours_to_show: 3
-                  - type: sensor
-                    entity: sensor.mqtt_xiaomi_a4_c1_38_a5_fd_de_bathroom_temperature
-                    graph: line
-                    hours_to_show: 3
+#                  - type: sensor
+#                    entity: sensor.mqtt_xiaomi_a4_c1_38_a5_fd_de_bathroom_temperature
+#                    graph: line
+#                    hours_to_show: 3
               - type: vertical-stack
                 cards:
-                  - type: sensor
-                    entity: sensor.mqtt_xiaomi_a4_c1_38_79_01_ce_ensuite_temperature
-                    graph: line
-                    hours_to_show: 3
+#                  - type: sensor
+#                    entity: sensor.mqtt_xiaomi_a4_c1_38_79_01_ce_ensuite_temperature
+#                    graph: line
+#                    hours_to_show: 3
                   - type: sensor
                     entity: sensor.toilet_sensor_temperature
                     graph: line
                     hours_to_show: 3
-                  - type: sensor
-                    entity: sensor.mqtt_xiaomi_atc_58447f_office_temperature
-                    graph: line
-                    hours_to_show: 3
+#                  - type: sensor
+#                    entity: sensor.mqtt_xiaomi_atc_58447f_office_temperature
+#                    graph: line
+#                    hours_to_show: 3
               - type: vertical-stack
                 cards:
                   - type: sensor
                     entity: sensor.hall_temperature
                     graph: line
                     hours_to_show: 3
-                  - type: sensor
-                    entity: sensor.mqtt_xiaomi_loft_temperature
-                    graph: line
-                    hours_to_show: 3
+#                  - type: sensor
+#                    entity: sensor.mqtt_xiaomi_loft_temperature
+#                    graph: line
+#                    hours_to_show: 3
                   - type: sensor
                     entity: sensor.master_bedroom_sensor_temperature
                     graph: line
@@ -95,10 +93,6 @@ views:
                     hours_to_show: 3
                   - type: sensor
                     entity: sensor.spare_bedroom_sensor_temperature
-                    graph: line
-                    hours_to_show: 3
-                  - type: sensor
-                    entity: sensor.outside_front_sensor_temperature
                     graph: line
                     hours_to_show: 3
 #          - type: custom:auto-entities

@@ -25,11 +25,12 @@
   condition:
     - condition: time
       after: '19:00:00'
+      before: '06:00:00'
   action:
     service: light.turn_on
     target:
       # i.e. the downstairs one only (not the landing since they are near bedrooms)
-      entity_id: light.hall_light
+      entity_id: light.hall_lights
     data:
       brightness: 10
 
