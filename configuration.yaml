@@ -308,7 +308,7 @@ light:
       - light.the_living_room_lights
       - light.downstairs_cupboard_light
       - light.outside_light
-      - light.kitchen-rear-light
+      - light.kitchen_rear_light
   - platform: group
     name: upstairs_lights
     entities:
