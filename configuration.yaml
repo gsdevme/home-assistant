@@ -294,6 +294,7 @@ light:
     name: hall_lights
     entities:
       - light.hall_wall_office_light
+      - light.hall_wall_livingroom_light
   - platform: group
     name: all_living_room_lights
     entities:
