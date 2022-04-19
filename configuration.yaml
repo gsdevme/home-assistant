@@ -298,7 +298,7 @@ light:
   - platform: group
     name: all_living_room_lights
     entities:
-#      - light.living_room_lamp
+      - light.living_room_lamp
       - light.living_room_playbar
 #      - light.living_room_light
 #      - light.living_room_light_strip
