@@ -1,0 +1,6 @@
+- platform: integration
+  source: sensor.my_office_setup_plug_power
+  name: office_plug_kwh
+  unit_prefix: k
+  round: 2
+  method: left
