@@ -143,7 +143,7 @@ mqtt:
   discovery: true
 
 recorder:
-  purge_keep_days: 3
+  purge_keep_days: 8
   include:
     domains:
       - sensor
@@ -156,6 +156,7 @@ recorder:
       - sun
       - light
       - timer
+      - climate
   exclude:
     entity_globs:
       - '*led_indication'
