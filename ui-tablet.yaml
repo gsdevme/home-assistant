@@ -1,0 +1,9 @@
+title: Energy
+views:
+  # View tab title.
+  - title: Energy
+    cards:
+      - type: energy-usage-graph
+      - type: energy-solar-graph
+      - type: energy-sources-table
+      - type: energy-devices-graph

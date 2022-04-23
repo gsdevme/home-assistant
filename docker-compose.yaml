@@ -13,5 +13,6 @@ services:
       - ./customize.yaml:/config/customize.yaml
       - ./configuration.yaml:/config/configuration.yaml
       - ./ui-lovelace.yaml:/config/ui-lovelace.yaml
+      - ./ui-tablet.yaml:/config/ui-tablet.yaml
     ports:
       - 8123:8123
