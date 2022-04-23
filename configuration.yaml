@@ -263,6 +263,14 @@ lovelace:
       type: module
     - url: /local/mini-graph-card-bundle.js
       type: js
+  dashboards:
+    tablet-dashboard: # Needs to contain a hyphen (-)
+      mode: yaml
+      title: Tablet
+      filename: ui-tablet.yaml
+      icon: mdi:tools
+      show_in_sidebar: true
+      require_admin: false
 
 alarm_control_panel:
   - platform: template
