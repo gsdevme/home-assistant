@@ -157,6 +157,7 @@ recorder:
       - light
       - timer
       - climate
+      - water_heater
   exclude:
     entity_globs:
       - '*led_indication'
