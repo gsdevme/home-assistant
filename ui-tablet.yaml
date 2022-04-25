@@ -1,9 +1,29 @@
 title: Energy
 views:
-  # View tab title.
   - title: Energy
     cards:
+      - type: horizontal-stack
+        cards:
+          - type: gauge
+            name: 'House Usage'
+            entity: sensor.electric_meter_power
+            unit: 'W'
+            max: 6000
+            min: 0
+#           - type: gauge
+#             name: 'House Solar'
+#             entity: sensor.current_solar_watts
+#             unit: 'W'
+#             max: 900
+#             min: 0
       - type: energy-usage-graph
       - type: energy-solar-graph
       - type: energy-sources-table
-      - type: energy-devices-graph
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+        filter:
+          include:
+            - entity_id: "sensor.energy_*"
+
