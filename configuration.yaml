@@ -212,6 +212,12 @@ binary_sensor: !include_dir_merge_list binary-sensors/
 switch: !include_dir_merge_list switches/
 
 template:
+  - sensor:
+      - name: "Thermostat Temperature"
+        unique_id: "hive_thermostat_current_temperature"
+        unit_of_measurement: "°C"
+        state: >
+          {{ state_attr('climate.thermostat', 'current_temperature') }}
   - binary_sensor:
       - name: people_home
         state: >
@@ -262,6 +268,8 @@ lovelace:
       type: module
     - url: /local/mini-graph-card-bundle.js
       type: js
+    - url: /local/apexcharts-card.js?v=2.0.1
+      type: module
   dashboards:
     tablet-dashboard: # Needs to contain a hyphen (-)
       mode: yaml
