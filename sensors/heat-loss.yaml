@@ -1,4 +1,4 @@
 - platform: integration
-  source: climate.thermostat.current_temperature
+  source: climate.thermostat.attributes.current_temperature
   name: thermostat_heat_loss
   round: 1
