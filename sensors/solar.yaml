@@ -1,24 +1,24 @@
-- platform: mqtt
-  state_topic: "solar/110E0017B230004/Pac"
-  unit_of_measurement: "W"
-  unique_id: "current_solar_watts"
-  device_class: "power"
-  name: "Current Solar Watts"
-- platform: mqtt
-  state_topic: "solar/110E0017B230004/kwhtoday"
-  unit_of_measurement: "kWh"
-  unique_id: "solar_today_kwh"
-  device_class: "power"
-  name: "Solar Kwh Today"
-- platform: mqtt
-  state_topic: "solar/110E0017B230004/kwhtpta;"
-  unit_of_measurement: "kWh"
-  unique_id: "solar_total_kwh"
-  device_class: "power"
-  name: "Solar Kwh Total"
-- platform: integration
-  source: sensor.current_solar_watts
-  name: solar_kwh
-  unit_prefix: k
-  round: 2
-  method: left
+#- platform: mqtt
+#  state_topic: "solar/110E0017B230004/Pac"
+#  unit_of_measurement: "W"
+#  unique_id: "current_solar_watts"
+#  device_class: "power"
+#  name: "Current Solar Watts"
+#- platform: mqtt
+#  state_topic: "solar/110E0017B230004/kwhtoday"
+#  unit_of_measurement: "kWh"
+#  unique_id: "solar_today_kwh"
+#  device_class: "power"
+#  name: "Solar Kwh Today"
+#- platform: mqtt
+#  state_topic: "solar/110E0017B230004/kwhtpta;"
+#  unit_of_measurement: "kWh"
+#  unique_id: "solar_total_kwh"
+#  device_class: "power"
+#  name: "Solar Kwh Total"
+#- platform: integration
+#  source: sensor.current_solar_watts
+#  name: solar_kwh
+#  unit_prefix: k
+#  round: 2
+#  method: left

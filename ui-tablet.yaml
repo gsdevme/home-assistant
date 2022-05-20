@@ -5,17 +5,22 @@ views:
       - type: horizontal-stack
         cards:
           - type: gauge
-            name: 'House Usage'
-            entity: sensor.electric_meter_power
+            name: 'Grid Export'
+            entity: sensor.grid_export_power
             unit: 'W'
+            max: 4000
+            min: 0
+          - type: gauge
+            name: 'Grid Usage'
+            entity: sensor.grid_energy_power
+            unit: 'W'
+            needle: true
             max: 6000
             min: 0
-#           - type: gauge
-#             name: 'House Solar'
-#             entity: sensor.current_solar_watts
-#             unit: 'W'
-#             max: 900
-#             min: 0
+            severity:
+              green: 0
+              yellow: 1000
+              red: 2000
       - type: energy-usage-graph
       - type: energy-solar-graph
       - type: energy-sources-table
