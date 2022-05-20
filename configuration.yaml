@@ -115,18 +115,18 @@ alexa:
         name: "Master Bedroom Lamp"
 
 utility_meter:
-  monthly_energy:
-    source: sensor.electric_meter_energy
-    cycle: monthly
-  daily_energy:
-    source: sensor.electric_meter_energy
-    cycle: daily
-  solar_daily_energy:
-    source: sensor.solar_kwh
-    cycle: daily
-  shed_solar_daily_energy:
-    source: sensor.sehd_solar_kwh
-    cycle: daily
+#  monthly_energy:
+#    source: sensor.electric_meter_energy
+#    cycle: monthly
+#  daily_energy:
+#    source: sensor.electric_meter_energy
+#    cycle: daily
+#  solar_daily_energy:
+#    source: sensor.solar_kwh
+#    cycle: daily
+#  shed_solar_daily_energy:
+#    source: sensor.sehd_solar_kwh
+#    cycle: daily
 
 energy:
 
@@ -218,6 +218,55 @@ template:
         unit_of_measurement: "°C"
         state: >
           {{ state_attr('climate.thermostat', 'current_temperature') }}
+  - sensor:
+      # Negative number means we are exporting to the grid
+      - name: "Grid Export Power"
+        unique_id: "grid_export_power"
+        device_class: power
+        state_class: measurement
+        unit_of_measurement: "W"
+        state: >
+          {% if states('sensor.grid_power')| float(0) < 0 %}
+            {{ (states('sensor.grid_power') | float(0)) | abs }}
+          {% else %}
+            0
+          {% endif %}
+      # Positive number means we are buying from the grid
+      - name: "Grid Energy Power"
+        unique_id: "grid_energy_power"
+        device_class: power
+        state_class: measurement
+        unit_of_measurement: "W"
+        state: >
+          {% if states('sensor.grid_power') | float(0) <= 0 %}
+            0
+          {% else %}
+            {{ states('sensor.grid_power') | float(0) }}
+          {% endif %}
+      # Negative number means we are generating
+      - name: "Solar Generating Power"
+        unique_id: "solar_generating_power"
+        device_class: power
+        state_class: measurement
+        unit_of_measurement: "W"
+        state: >
+          {% if states('sensor.solar_power')| float(0) < 0 %}
+            {{ (states('sensor.solar_power') | float(0)) | abs }}
+          {% else %}
+            0
+          {% endif %}
+      # Positive number means we are charging
+      - name: "Battery Charger Power"
+        unique_id: "battery_charging_power"
+        device_class: power
+        state_class: measurement
+        unit_of_measurement: "W"
+        state: >
+          {% if states('sensor.solar_power')| float(0) <= 0 %}
+            0
+          {% else %}
+            {{ (states('sensor.solar_power') | float(0)) | abs }}
+          {% endif %}
   - binary_sensor:
       - name: people_home
         state: >

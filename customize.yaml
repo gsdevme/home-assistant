@@ -86,3 +86,12 @@ binary_sensor.mqtt_guest_mode:
 switch.mqtt_guest_mode_switch:
   friendly_name: Guest Mode Enabled
   icon: mdi:human-greeting
+
+sensor.grid_export_power:
+  friendly_name: Grid Export
+sensor.grid_energy_power:
+  friendly_name: Grid Energy
+sensor.solar_generating_power:
+  friendly_name: Solar Generation
+sensor.battery_charging_power:
+  friendly_name: Battery Charging

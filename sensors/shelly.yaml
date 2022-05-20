@@ -1,0 +1,38 @@
+- platform: mqtt
+  state_topic: "shellies/shellyem3/emeter/2/power"
+  unit_of_measurement: "W"
+  unique_id: "grid_power"
+  device_class: "power"
+  name: "Grid Power"
+
+- platform: mqtt
+  state_topic: "shellies/shellyem3/emeter/1/power"
+  unit_of_measurement: "W"
+  unique_id: "solar_power"
+  device_class: "power"
+  name: "Solar Power"
+
+- platform: integration
+  source: sensor.grid_export_power
+  name: grid_export_kwh
+  unit_prefix: k
+  round: 2
+  method: left
+- platform: integration
+  source: sensor.grid_energy_power
+  name: grid_energy_kwh
+  unit_prefix: k
+  round: 2
+  method: left
+- platform: integration
+  source: sensor.solar_generating_power
+  name: solar_generating_kwh
+  unit_prefix: k
+  round: 2
+  method: left
+- platform: integration
+  source: sensor.battery_charging_power
+  name: solar_battery_charger_kwh
+  unit_prefix: k
+  round: 2
+  method: left

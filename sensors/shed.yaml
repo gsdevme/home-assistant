@@ -1,52 +1,52 @@
-- platform: mqtt
-  unique_id: "shed_battery_temp"
-  name: "Shed Battery Temp"
-  state_topic: "shed/battery_temp"
-  unit_of_measurement: '°C'
-  device_class: 'temperature'
-
-- platform: mqtt
-  unique_id: "shed_controller_temp"
-  name: "Shed Controller Temp"
-  state_topic: "shed/controller_temp"
-  unit_of_measurement: '°C'
-  device_class: 'temperature'
-
-- platform: mqtt
-  unique_id: "shed_battery_voltage"
-  name: "Shed Battery Voltage"
-  state_topic: "shed/battery_voltage"
-  device_class: 'voltage'
-
-- platform: mqtt
-  unique_id: "shed_pi_temp"
-  name: "Shed Pi Temp"
-  state_topic: "shed/pi_temp"
-  unit_of_measurement: '°C'
-  device_class: 'temperature'
-
-- platform: mqtt
-  unique_id: "shed_charge_voltage"
-  name: "Shed Charge Voltage"
-  state_topic: "shed/charge_voltage"
-  device_class: 'voltage'
-
-- platform: mqtt
-  unique_id: "shed_charge_current"
-  name: "Shed Charge Current"
-  state_topic: "shed/charge_current"
-  device_class: 'current'
-
-- platform: mqtt
-  unique_id: "shed_charge_watts"
-  name: "Shed Charge Watts"
-  state_topic: "shed/charge_power"
-  unit_of_measurement: 'W'
-  device_class: 'power'
-
-- platform: integration
-  source: sensor.shed_charge_watts
-  name: sehd_solar_kwh
-  unit_prefix: k
-  round: 2
-  method: left
+#- platform: mqtt
+#  unique_id: "shed_battery_temp"
+#  name: "Shed Battery Temp"
+#  state_topic: "shed/battery_temp"
+#  unit_of_measurement: '°C'
+#  device_class: 'temperature'
+#
+#- platform: mqtt
+#  unique_id: "shed_controller_temp"
+#  name: "Shed Controller Temp"
+#  state_topic: "shed/controller_temp"
+#  unit_of_measurement: '°C'
+#  device_class: 'temperature'
+#
+#- platform: mqtt
+#  unique_id: "shed_battery_voltage"
+#  name: "Shed Battery Voltage"
+#  state_topic: "shed/battery_voltage"
+#  device_class: 'voltage'
+#
+#- platform: mqtt
+#  unique_id: "shed_pi_temp"
+#  name: "Shed Pi Temp"
+#  state_topic: "shed/pi_temp"
+#  unit_of_measurement: '°C'
+#  device_class: 'temperature'
+#
+#- platform: mqtt
+#  unique_id: "shed_charge_voltage"
+#  name: "Shed Charge Voltage"
+#  state_topic: "shed/charge_voltage"
+#  device_class: 'voltage'
+#
+#- platform: mqtt
+#  unique_id: "shed_charge_current"
+#  name: "Shed Charge Current"
+#  state_topic: "shed/charge_current"
+#  device_class: 'current'
+#
+#- platform: mqtt
+#  unique_id: "shed_charge_watts"
+#  name: "Shed Charge Watts"
+#  state_topic: "shed/charge_power"
+#  unit_of_measurement: 'W'
+#  device_class: 'power'
+#
+#- platform: integration
+#  source: sensor.shed_charge_watts
+#  name: sehd_solar_kwh
+#  unit_prefix: k
+#  round: 2
+#  method: left
