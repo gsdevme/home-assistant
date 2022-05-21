@@ -21,9 +21,32 @@ views:
               green: 0
               yellow: 1000
               red: 2000
-      - type: energy-usage-graph
+      - type: horizontal-stack
+        cards:
+          - type: gauge
+            name: 'Solar Generation'
+            entity: sensor.solar_generating_power
+            unit: 'W'
+            max: 4800
+            min: 0
+            severity:
+              green: 1000
+              yellow: 600
+              red: 0
+          - type: gauge
+            name: 'Power Usage'
+            entity: sensor.power_usage
+            unit: 'W'
+            max: 6000
+            min: 0
+            severity:
+              green: 0
+              yellow: 1000
+              red: 3000
+      - type: energy-date-selection
       - type: energy-solar-graph
-      - type: energy-sources-table
+      - type: energy-distribution
+        link_dashboard: true
       - type: custom:auto-entities
         show_empty: false
         card:

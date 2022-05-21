@@ -228,7 +228,7 @@ template:
         unit_of_measurement: "W"
         state: >
           {% if states('sensor.grid_power')| float(0) < 0 %}
-            {{ (states('sensor.grid_power') | float(0)) | abs }}
+            {{ (states('sensor.grid_power') | float(0)) | abs | round(0, 'floor') }}
           {% else %}
             0
           {% endif %}
@@ -242,7 +242,7 @@ template:
           {% if states('sensor.grid_power') | float(0) <= 0 %}
             0
           {% else %}
-            {{ states('sensor.grid_power') | float(0) }}
+            {{ states('sensor.grid_power') | float(0) | round(0, 'ceil') }}
           {% endif %}
       # Negative number means we are generating
       - name: "Solar Generating Power"
@@ -252,7 +252,7 @@ template:
         unit_of_measurement: "W"
         state: >
           {% if states('sensor.solar_power')| float(0) < 0.01 %}
-            {{ (states('sensor.solar_power') | float(0)) | abs }}
+            {{ (states('sensor.solar_power') | float(0)) | abs | round(0, 'floor') }}
           {% else %}
             0
           {% endif %}
@@ -266,7 +266,7 @@ template:
           {% if states('sensor.solar_power')| float(0) <= 0 %}
             0
           {% else %}
-            {{ (states('sensor.solar_power') | float(0)) | abs }}
+            {{ (states('sensor.solar_power') | float(0)) | abs | round(0, 'floor') }}
           {% endif %}
       # ATM there is no way to know this vs solar due to hybrid inverter
       - name: "Battery Export Power"
@@ -276,6 +276,14 @@ template:
         unit_of_measurement: "W"
         state: >
             0
+      # Power usage
+      - name: "Power Usage"
+        unique_id: "power_usage"
+        device_class: power
+        state_class: measurement
+        unit_of_measurement: "W"
+        state: >
+          {{ (states('sensor.grid_energy_power') | float(0)) + ((states('sensor.solar_generating_power') | float(0)) - (states('sensor.grid_export_power') | float(0))) }}
   - binary_sensor:
       - name: people_home
         state: >
