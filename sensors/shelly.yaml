@@ -15,30 +15,35 @@
 - platform: integration
   source: sensor.grid_export_power
   name: grid_export_kwh
+  unique_id: grid_export_kwh
   unit_prefix: k
   round: 2
   method: left
 - platform: integration
   source: sensor.grid_energy_power
   name: grid_energy_kwh
+  unique_id: grid_energy_kwh
   unit_prefix: k
   round: 2
   method: left
 - platform: integration
   source: sensor.solar_generating_power
   name: solar_generating_kwh
+  unique_id: solar_generating_kwh
   unit_prefix: k
   round: 2
   method: left
 - platform: integration
   source: sensor.battery_charging_power
   name: solar_battery_charger_kwh
+  unique_id: solar_battery_charger_kwh
   unit_prefix: k
   round: 2
   method: left
 - platform: integration
   source: sensor.battery_export_power
   name: solar_battery_export_kwh
+  unique_id: solar_battery_export_kwh
   unit_prefix: k
   round: 2
   method: left
