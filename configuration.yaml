@@ -135,9 +135,10 @@ logger:
   logs:
     homeassistant.components.alexa: debug
 
-mqtt:
-  broker: !env_var MQTT_HOST 127.0.0.1
-  discovery: true
+# Home assistants dogmatic guidelines mean this has to be UI driven now
+#mqtt:
+#  broker: !env_var MQTT_HOST 127.0.0.1
+#  discovery: true
 
 recorder:
   purge_keep_days: 8
@@ -250,7 +251,7 @@ template:
         state_class: measurement
         unit_of_measurement: "W"
         state: >
-          {% if states('sensor.solar_power')| float(0) < 0 %}
+          {% if states('sensor.solar_power')| float(0) < 0.01 %}
             {{ (states('sensor.solar_power') | float(0)) | abs }}
           {% else %}
             0
@@ -267,6 +268,14 @@ template:
           {% else %}
             {{ (states('sensor.solar_power') | float(0)) | abs }}
           {% endif %}
+      # ATM there is no way to know this vs solar due to hybrid inverter
+      - name: "Battery Export Power"
+        unique_id: "battery_export_power"
+        device_class: power
+        state_class: measurement
+        unit_of_measurement: "W"
+        state: >
+            0
   - binary_sensor:
       - name: people_home
         state: >
@@ -277,13 +286,6 @@ template:
       - name: all_lights_off
         state: >
           {{ is_state('light.all_lights', 'off') }}
-  - binary_sensor:
-      - name: is_gavin_asleep
-        state: >
-          {{ now().hour < 10
-            and is_state('binary_sensor.all_lights_off', 'on')
-            and is_state('binary_sensor.motion_inside', 'off')
-            and is_state('person.gavin', 'home') }}
   - binary_sensor:
       - name: motion_inside
         state: >
