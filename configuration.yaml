@@ -251,7 +251,7 @@ template:
         state_class: measurement
         unit_of_measurement: "W"
         state: >
-          {% if states('sensor.immersion') | float(0) <= 0 %}
+          {% if states('sensor.immersion') | float(0) <= 5 %}
             {{ states('sensor.immersion') | float(0) | round(0, 'ceil') | abs }}
           {% else %}
             0
@@ -263,7 +263,7 @@ template:
         state_class: measurement
         unit_of_measurement: "W"
         state: >
-          {% if states('sensor.solar_power')| float(0) < 0.01 %}
+          {% if states('sensor.solar_power')| float(0) < 5 %}
             {{ (states('sensor.solar_power') | float(0)) | abs | round(0, 'floor') }}
           {% else %}
             0
