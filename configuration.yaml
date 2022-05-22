@@ -244,6 +244,18 @@ template:
           {% else %}
             {{ states('sensor.grid_power') | float(0) | round(0, 'ceil') }}
           {% endif %}
+      # immersion is actually wired the wrong way so flip it
+      - name: "Immersion Power"
+        unique_id: "immersion_power"
+        device_class: power
+        state_class: measurement
+        unit_of_measurement: "W"
+        state: >
+          {% if states('sensor.immersion') | float(0) <= 0 %}
+            {{ states('sensor.immersion') | float(0) | round(0, 'ceil') | abs }}
+          {% else %}
+            0
+          {% endif %}
       # Negative number means we are generating
       - name: "Solar Generating Power"
         unique_id: "solar_generating_power"

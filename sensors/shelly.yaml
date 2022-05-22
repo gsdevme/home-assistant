@@ -12,6 +12,13 @@
   device_class: "power"
   name: "Solar Power"
 
+- platform: mqtt
+  state_topic: "shellies/shellyem3/emeter/0/power"
+  unit_of_measurement: "W"
+  unique_id: "immersion"
+  device_class: "power"
+  name: "Immersion"
+
 - platform: integration
   source: sensor.grid_export_power
   name: grid_export_kwh
